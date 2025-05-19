@@ -1,0 +1,46 @@
+services:
+  database:
+    build:
+      context: ./database
+      dockerfile: Dockerfile
+    container_name: postgres_prestamos
+    environment:
+      POSTGRES_USER: dtic_admin
+      POSTGRES_PASSWORD: dtic_secret_password
+      POSTGRES_DB: prestamos_aulas_dtic
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - dtic_net
+
+  crud_service:
+    build:
+      context: ./crud_service
+      dockerfile: Dockerfile
+    container_name: crud_service
+    depends_on:
+      - database
+    environment:
+      DB_HOST: database
+      DB_PORT: 5432
+      DB_NAME: prestamos_aulas_dtic
+      DB_USER: dtic_admin
+      DB_PASSWORD: dtic_secret_password
+    ports:
+      - "3000:3000"
+    networks:
+      - dtic_net
+
+  # otros_servicios (más adelante) 
+  #   - reportes_service
+  #   - frontend
+  #   - .....
+
+volumes:
+  postgres_data:
+
+networks:
+  dtic_net:
+    driver: bridge
