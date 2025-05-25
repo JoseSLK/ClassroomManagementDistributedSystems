@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS Estudiantes (
 
 -- Tabla: Aulas
 CREATE TABLE IF NOT EXISTS Aulas (
-    aula_id SERIAL PRIMARY KEY,
+    aula_id INTEGER PRIMARY KEY,
     nombre_aula VARCHAR(50) UNIQUE NOT NULL,
     ubicacion VARCHAR(100),
     capacidad INTEGER,
@@ -67,9 +67,9 @@ INSERT INTO Estudiantes (estudiante_id, nombres, email, programa_academico) VALU
 (20222005, 'Ana Lucía', 'ana.martinez@example.com', 'Ingeniería Electrónica');
 
 INSERT INTO Aulas (nombre_aula, ubicacion, capacidad, tipo_aula) VALUES
-('Sala Cómputo 1', 'Edificio TIC - Piso 1', 30, 'Sala de Cómputo'),
-('Auditorio Menor', 'Bloque B - Piso 2', 100, 'Auditorio'),
-('Laboratorio Redes', 'Edificio TIC - Piso 2', 20, 'Laboratorio Especializado');
+(1, 'Sala Cómputo 1', 'Edificio TIC - Piso 1', 30, 'Sala de Cómputo'),
+(2, 'Auditorio Menor', 'Bloque B - Piso 2', 100, 'Auditorio'),
+(3, 'Laboratorio Redes', 'Edificio TIC - Piso 2', 20, 'Laboratorio Especializado');
 
 INSERT INTO Prestamos (estudiante_id, aula_id, fecha_hora_inicio_prestamo, fecha_hora_fin_prestamo, actividad_academica, estado_prestamo) VALUES
 ((SELECT estudiante_id FROM Estudiantes WHERE estudiante_id = 20231001),
