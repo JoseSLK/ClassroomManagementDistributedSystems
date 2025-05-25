@@ -5,8 +5,7 @@ BEGIN;
 
 -- Tabla: Estudiantes
 CREATE TABLE IF NOT EXISTS Estudiantes (
-    estudiante_id SERIAL PRIMARY KEY,
-    codigo_estudiante VARCHAR(20) UNIQUE NOT NULL,
+    estudiante_id INTEGER PRIMARY KEY,
     nombres VARCHAR(100) NOT NULL,
     email VARCHAR(255) UNIQUE NOT NULL,
     programa_academico VARCHAR(100),
@@ -54,20 +53,18 @@ CREATE INDEX IF NOT EXISTS idx_prestamos_aula_id ON Prestamos (aula_id);
 CREATE INDEX IF NOT EXISTS idx_prestamos_fechas ON Prestamos (fecha_hora_inicio_prestamo, fecha_hora_fin_prestamo);
 CREATE INDEX IF NOT EXISTS idx_prestamos_estado ON Prestamos (estado_prestamo);
 CREATE INDEX IF NOT EXISTS idx_aulas_nombre ON Aulas (nombre_aula);
-CREATE INDEX IF NOT EXISTS idx_estudiantes_codigo ON Estudiantes (codigo_estudiante);
 
 -- Comentarios sobre las tablas y columnas (opcional, pero buena práctica)
 COMMENT ON TABLE Estudiantes IS 'Almacena la información de los estudiantes que pueden solicitar préstamos.';
-COMMENT ON COLUMN Estudiantes.codigo_estudiante IS 'Código institucional único del estudiante.';
 COMMENT ON TABLE Aulas IS 'Contiene la información de las aulas disponibles para préstamo.';
 COMMENT ON COLUMN Aulas.nombre_aula IS 'Nombre o código identificador único del aula (ej. "Sala A", "301").';
 COMMENT ON TABLE Prestamos IS 'Registra cada transacción de préstamo de un aula a un estudiante.';
 COMMENT ON COLUMN Prestamos.estado_prestamo IS 'Estado actual del préstamo: Solicitado, Aprobado, Rechazado, En Curso, Finalizado, Cancelado.';
 
 
-INSERT INTO Estudiantes (codigo_estudiante, nombres, email, programa_academico) VALUES
-('20231001', 'Juan Alberto', 'juan.perez@example.com', 'Ingeniería de Sistemas'),
-('20222005', 'Ana Lucía', 'ana.martinez@example.com', 'Ingeniería Electrónica');
+INSERT INTO Estudiantes (estudiante_id, nombres, email, programa_academico) VALUES
+(20231001, 'Juan Alberto', 'juan.perez@example.com', 'Ingeniería de Sistemas'),
+(20222005, 'Ana Lucía', 'ana.martinez@example.com', 'Ingeniería Electrónica');
 
 INSERT INTO Aulas (nombre_aula, ubicacion, capacidad, tipo_aula) VALUES
 ('Sala Cómputo 1', 'Edificio TIC - Piso 1', 30, 'Sala de Cómputo'),
@@ -75,7 +72,7 @@ INSERT INTO Aulas (nombre_aula, ubicacion, capacidad, tipo_aula) VALUES
 ('Laboratorio Redes', 'Edificio TIC - Piso 2', 20, 'Laboratorio Especializado');
 
 INSERT INTO Prestamos (estudiante_id, aula_id, fecha_hora_inicio_prestamo, fecha_hora_fin_prestamo, actividad_academica, estado_prestamo) VALUES
-((SELECT estudiante_id FROM Estudiantes WHERE codigo_estudiante = '20231001'),
+((SELECT estudiante_id FROM Estudiantes WHERE estudiante_id = 20231001),
 (SELECT aula_id FROM Aulas WHERE nombre_aula = 'Sala Cómputo 1'),
 '2025-05-20 10:00:00',
 '2025-05-20 12:00:00',
