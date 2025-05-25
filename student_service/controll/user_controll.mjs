@@ -1,3 +1,4 @@
+import { UniqueConstraintError } from 'sequelize';
 import Estudiante from "../models/student.mjs"
 
 async function get_all_student(req, res) {
@@ -34,6 +35,11 @@ async function create_student(req, res) {
         const new_student = await Estudiante.create(req.body);
         res.status(201).json(new_student);
     } catch (error) {
+        if (error instanceof UniqueConstraintError) {
+            const field = error.errors[0].path;
+            return res.status(400).json({ error: `El valor para '${field}' ya existe.` });
+        }
+
         res.status(400).json({ error: error.message });
     }
 }
@@ -69,6 +75,11 @@ async function update_student(req, res) {
         if (updated[0] === 0) return res.status(404).json({ error: 'No encontrado' });
         res.json({ mensaje: 'Estudiante actualizado' });
     } catch (error) {
+        if (error instanceof UniqueConstraintError) {
+            const field = error.errors[0].path;
+            return res.status(400).json({ error: `El valor para '${field}' ya existe.` });
+        }
+
         res.status(400).json({ error: error.message });
     }
 }
