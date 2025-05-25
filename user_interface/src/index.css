@@ -1,0 +1,193 @@
+:root {
+  font-family: 'Cormorant Garamond', serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light;
+  color: #333333;
+  background-color: #ffffff;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #FFB800;
+  text-decoration: inherit;
+  transition: color 0.2s ease;
+}
+a:hover {
+  color: #FFA000;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: #ffffff;
+}
+
+h1 {
+  font-size: 2.5em;
+  line-height: 1.1;
+  color: #333333;
+  font-weight: 600;
+  font-family: 'Cormorant Garamond', serif;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: 'Cormorant Garamond', serif;
+  background-color: #FFB800;
+  color: #000000;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+button:hover {
+  background-color: #FFA000;
+  transform: translateY(-1px);
+}
+button:focus,
+button:focus-visible {
+  outline: 2px solid #FFB800;
+  outline-offset: 2px;
+}
+
+/* Navigation styles */
+.nav-container {
+  /* background-color: white; */
+  /* box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); */
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  /* border-bottom: 1px solid #f0f0f0; */
+  display: flex;
+  justify-content: center;
+}
+
+.nav-content {
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.nav-list {
+  display: flex;
+  gap: 2rem;
+  background-color: #FFB800;
+  padding: 0 1rem;
+  justify-content: center;
+  margin: 0.5rem 0;
+}
+
+.nav-button {
+  padding: 1rem 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #000000;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s ease;
+  border-radius: 0;
+  background: none;
+}
+
+.nav-button:hover {
+  color: #000000;
+  border-bottom-color: #000000;
+  transform: none;
+  opacity: 0.8;
+}
+
+.nav-button.active {
+  color: #ffffff;
+  border-bottom-color: transparent;
+  font-weight: 700;
+  background-color: rgba(0, 0, 0, 0.862);
+}
+
+/* Header styles */
+.header-container {
+  background-color: white;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.header-content {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-title {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.header-title h1 {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0;
+  font-family: 'Cormorant Garamond', serif;
+}
+
+.university-name {
+  font-size: 1.125rem;
+  color: #4b5563;
+  margin: 0;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+}
+
+.university-logo {
+  height: 60px;
+  width: auto;
+  object-fit: contain;
+}
+
+/* Main content styles */
+.main-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  /* padding: 2rem 1rem; */
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.section {
+  scroll-margin-top: 5rem;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #333333;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #FFA000;
+  }
+  button {
+    background-color: #FFB800;
+  }
+}

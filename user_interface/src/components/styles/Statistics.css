@@ -1,0 +1,26 @@
+.statistics-container {
+  padding: 2rem;
+  background-color: white;
+  border-radius: 1rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  font-family: 'Cormorant Garamond', serif;
+}
+
+.chart-section {
+  margin-bottom: 3rem;
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border-radius: 0.5rem;
+}
+
+.chart-section h3 {
+  color: #333;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.statistics-container h2 {
+  color: #333;
+  margin-bottom: 2rem;
+  text-align: center;
+}
