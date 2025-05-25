@@ -69,6 +69,23 @@ services:
     networks:
       - dtic_net
 
+  user_interface:
+    build:
+      context: ./user_interface
+      dockerfile: Dockerfile
+    container_name: user_interface
+    depends_on:
+      - loan_service
+      - student_service
+      - rooms_service
+    environment:
+      LOAN_SERVICE_URL: http://loan_service:3000
+      STUDENT_SERVICE_URL: http://student_service:3000
+      ROOMS_SERVICE_URL: http://rooms_service:3000
+    ports:
+      - "5000:4173"
+    networks:
+      - dtic_net
 
   # otros_servicios (más adelante) 
   #   - reportes_service

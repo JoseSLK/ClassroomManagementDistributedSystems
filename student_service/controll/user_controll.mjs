@@ -23,15 +23,12 @@ async function get_student_by_id(req, res) {
 
 async function create_student(req, res) {
     try {
-        const { email, estudiante_id } = req.body;
+        const { email } = req.body;
 
         if (!email.endsWith('@uptc.edu.co')) {
             return res.status(400).json({ error: 'El email debe terminar en @uptc.edu.co' });
         }
     
-        if (estudiante_id === undefined) {
-            return res.status(400).json({ error: 'No se puede definir estudiante_id manualmente' });
-        }
         const new_student = await Estudiante.create(req.body);
         res.status(201).json(new_student);
     } catch (error) {
