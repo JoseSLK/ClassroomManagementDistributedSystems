@@ -51,6 +51,24 @@ services:
     networks:
       - dtic_net
 
+  loan_service:
+    build:
+      context: ./loan_service
+      dockerfile: Dockerfile
+    container_name: loan_service
+    depends_on:
+      - database
+    environment:
+      DB_HOST: database
+      DB_PORT: 5432
+      DB_NAME: prestamos_aulas_dtic
+      DB_USER: dtic_admin
+      DB_PASSWORD: dtic_secret_password
+    ports:
+      - "4000:3000"
+    networks:
+      - dtic_net
+
 
   # otros_servicios (más adelante) 
   #   - reportes_service
